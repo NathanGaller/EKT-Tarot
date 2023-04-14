@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Tarot",
+    "slug": "Tarot",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.app.tarot",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "config": {
+        "googleSignIn": {
+          "clientId": "ANDROID_CLIENT_ID"
+        }
+      },
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "googleClientId": "GOOGLE_CLIENT_ID",
+        "projectId": "ANDROID_CLIENT_ID"
+      }
+    }
+  }
+}
