@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useUserContext } from '../UserContext';
 import TarotReadingList from '../TarotReadingList';
 import { getUserTarotReadings } from '../interop/tarot';
+import { styles } from '../Style';
 
 const HistoryScreen = ({ navigation }) => {
   const [tarotReadingHistory, setTarotReadingHistory] = useState([]);
@@ -12,13 +13,12 @@ const HistoryScreen = ({ navigation }) => {
     getUserTarotReadings(user)
       .then((readings) => setTarotReadingHistory(readings))
       .catch((error) => console.error(error));
+    console.log(tarotReadingHistory);
   }, []);
 
-  <View style={styles.container}>
+  return <View style={styles.container}>
     <TarotReadingList readings={tarotReadingHistory} />
   </View>
 };
-
-// Add the styles related to HistoryScreen
 
 export default HistoryScreen;

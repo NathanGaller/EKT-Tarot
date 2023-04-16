@@ -16,7 +16,15 @@ function AppNavigator() {
         <Stack.Screen
           name="TarotApp"
           component={TarotApp}
-          options={{ headerShown: false }} // Hide the header for the nested stack
+          options={({ navigation }) => ({
+            headerShown: false,
+            onLoginSuccess: () => {
+              navigation.reset({
+                index: 0,
+                routes: [{ name: 'TarotApp' }],
+              });
+            },
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>

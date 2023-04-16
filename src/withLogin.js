@@ -1,22 +1,23 @@
 import React from 'react';
-import Login from './Login';
 import { useUserContext } from './UserContext';
 
 const withLogin = (WrappedComponent) => {
-  return (props) => {
-    const { user, isLoggedIn, setIsLoggedIn } = useUserContext();
+  function WithLoginWrapper(props) {
+    const { user, setUser, setIsLoggedIn } = useUserContext();
 
-    const handleLoginSuccess = () => {
+    const handleLoginSuccess = (userData) => {
+      setUser(userData);
       setIsLoggedIn(true);
-      console.log(isLoggedIn);
+      console.log("Promise!", props.rout.params);
+      if (props.route.params?.onLoginSuccess) {
+        
+        props.route.params.onLoginSuccess();
+      }
     };
+    return <WrappedComponent {...props} onLoginSuccess={handleLoginSuccess} />;
+  }
 
-    if (!user) {
-      return <Login onLoginSuccess={handleLoginSuccess} />;
-    }
-
-    return <WrappedComponent {...props} />;
-  };
+  return WithLoginWrapper;
 };
 
 export default withLogin;

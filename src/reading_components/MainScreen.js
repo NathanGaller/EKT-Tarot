@@ -3,7 +3,10 @@ import { View, TextInput, TouchableOpacity, Text, ActivityIndicator, FlatList, S
 import { styles } from '../Style';
 import TarotReading from '../TarotReading';
 import TarotReadingDisplay from '../TarotReadingDisplay';
+import { getTarotReading } from '../interop/tarot';
 import { ComplexError } from '../api';
+import { useUserContext } from '../UserContext';
+
 
 
 const tarotQuestions = [
@@ -28,6 +31,8 @@ const MainScreen = ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
   const [tarotReadingResult, setTarotReadingResult] = useState(null);
+
+  const { user, setUser, setIsLoggedIn } = useUserContext();
 
   const handleSubmit = async () => {
     setError(false);
