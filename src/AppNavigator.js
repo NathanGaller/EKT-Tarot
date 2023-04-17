@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TarotApp from './TarotApp';
 import Login from './Login';
 import SignUp from './SignUp';
+import HomeScreen from './home/Home';
 
 const Stack = createStackNavigator();
 
@@ -11,6 +12,11 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen
