@@ -64,6 +64,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     paddingVertical: 10,
     paddingHorizontal: 15,
+    marginBottom: 15,
   },
   buttonText: {
     color: '#fff',
