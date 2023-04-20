@@ -5,6 +5,7 @@ import TarotApp from './TarotApp';
 import Login from './Login';
 import SignUp from './SignUp';
 import HomeScreen from './home/Home';
+import UpgradeToPremium from './premium';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ function AppNavigator() {
         />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="UpgradeToPremium" component={UpgradeToPremium} />
         <Stack.Screen
           name="TarotApp"
           component={TarotApp}

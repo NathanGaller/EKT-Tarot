@@ -73,11 +73,8 @@ export default function Login() {
     setError(false);
 
     try {
-      console.log("Sziasztok!")
       const response = await getLoginToken(email, password);
-      console.log("Sziasztok!2")
       setUser(response);
-      console.log("Sziasztok!3")
       setLoading(false);
       setIsLoggedIn(true);
       navigation.navigate('TarotApp'); // Navigate to TarotApp after login is successful

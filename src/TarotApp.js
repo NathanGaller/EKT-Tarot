@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { View, StyleSheet } from 'react-native';
 import { useUserContext } from './UserContext';
 import withLogin from './withLogin';
@@ -6,12 +8,12 @@ import { getTarotReading, getUserTarotReadings } from './interop/tarot';
 import { ComplexError } from './api';
 import MainScreen from './reading_components/MainScreen';
 import HistoryScreen from './reading_components/HistoryScreen';
-import { styles } from './Style';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from './home/Home';
 
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
-function TarotApp() {
+function TarotTabNavigator() {
   return (
     <Tab.Navigator
       initialRouteName="MainScreen"
@@ -32,6 +34,15 @@ function TarotApp() {
         options={{ title: 'Reading History' }}
       />
     </Tab.Navigator>
+  );
+}
+
+function TarotApp() {
+  return (
+    <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Tarot" component={TarotTabNavigator} />
+    </Drawer.Navigator>
   );
 }
 
