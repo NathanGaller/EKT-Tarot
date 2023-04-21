@@ -18,7 +18,7 @@ const tarotLoadingMessages = [
   "Interpreting the symbols...",
 ];
 
-export default function Login() {
+export default function Login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -27,7 +27,6 @@ export default function Login() {
   const [loadingMessage, setLoadingMessage] = useState('');
 
   const { user, setUser, setIsLoggedIn } = useUserContext();
-  const navigation = useNavigation();
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId: GOOGLE_CLIENT_ID,

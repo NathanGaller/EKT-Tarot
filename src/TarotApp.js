@@ -1,19 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { View, StyleSheet } from 'react-native';
-import { useUserContext } from './UserContext';
 import withLogin from './withLogin';
-import { getTarotReading, getUserTarotReadings } from './interop/tarot';
-import { ComplexError } from './api';
 import MainScreen from './reading_components/MainScreen';
 import HistoryScreen from './reading_components/HistoryScreen';
-import HomeScreen from './home/Home';
 
 const Tab = createBottomTabNavigator();
-const Drawer = createDrawerNavigator();
 
-function TarotTabNavigator() {
+function TarotTabNavigator({navigation}) {
   return (
     <Tab.Navigator
       initialRouteName="MainScreen"
@@ -37,13 +30,4 @@ function TarotTabNavigator() {
   );
 }
 
-function TarotApp() {
-  return (
-    <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="Tarot" component={TarotTabNavigator} />
-    </Drawer.Navigator>
-  );
-}
-
-export default withLogin(TarotApp);
+export default withLogin(TarotTabNavigator);

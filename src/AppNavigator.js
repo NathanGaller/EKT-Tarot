@@ -1,27 +1,29 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import TarotApp from './TarotApp';
 import Login from './Login';
 import SignUp from './SignUp';
 import HomeScreen from './home/Home';
 import UpgradeToPremium from './premium';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import TarotApp from './TarotApp';
 
-const Stack = createStackNavigator();
+//const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen
           name="Home"
           component={HomeScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="UpgradeToPremium" component={UpgradeToPremium} />
-        <Stack.Screen
+        <Drawer.Screen name="Login" component={Login} />
+        <Drawer.Screen name="SignUp" component={SignUp} />
+        <Drawer.Screen name="UpgradeToPremium" component={UpgradeToPremium} />
+        <Drawer.Screen
           name="TarotApp"
           component={TarotApp}
           options={({ navigation }) => ({
@@ -34,7 +36,7 @@ function AppNavigator() {
             },
           })}
         />
-      </Stack.Navigator>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
