@@ -112,6 +112,8 @@ export default function Login({navigation}) {
   );
 }
 
+Login.drawerLabel = null;
+
 const styles = StyleSheet.create({
   loginLink: {
     fontSize: 14,

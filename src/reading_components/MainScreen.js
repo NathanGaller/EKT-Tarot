@@ -66,6 +66,13 @@ const MainScreen = ({navigation}) => {
     setQuestion(tarotQuestions[randomIndex]);
   }, []);
 
+  React.useEffect(() => {
+    setQuestion('');
+    setError(false);
+    setLoading(false);
+    setTarotReadingResult(null);
+  }, [user]);
+
   const renderItem = ({ item }) => {
     if (item.type === 'cards') {
       return <TarotReading />;
